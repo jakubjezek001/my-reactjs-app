@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import useSession from './session_context';
 import "./App.css";
 import ftrackWidget from 'ftrack-web-widget'; // helper library for custom
+import Button from '@mui/material/Button';
+
 
 function displayProjectInfo(id) {
   ftrackWidget.openSidebar('Project', id);
@@ -26,12 +28,12 @@ function App() {
       <main>
         <ul>
           {projects.map((project) => (
-            <li className={entity.id === project.id ? 'current-project' : null}
-              onClick={() => {
+            <li className={entity.id === project.id ? 'current-project' : null}>
+              <Button variant="contained" color="primary" onClick={() => {
                 displayProjectInfo(project.id);
-              }}
-            >
-              {project.name}
+              }}>
+                {project.name}
+              </Button>
             </li>
           ))}
         </ul>
